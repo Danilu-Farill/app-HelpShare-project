@@ -1,0 +1,68 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#9BE6FB ;
+}
+/* header{
+    background-color: blue;
+    margin-bottom: 10vw;
+
+} */
+ .login{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+  }
+.loginForm {
+    position: relative;
+    z-index: 2; 
+    padding: 10px;
+    /* border-radius: 10px; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px */
+    padding-top:97px;
+    display: flex;
+    align-items: center;
+    margin-top:10vw;
+    
+}
+input.username, input.password{
+    width: 330px;
+    height: 33px;
+    border-radius: 5px;
+    margin: 14.2px  13px ;
+    border-color:#726C74;
+    background-color:rgba(246, 239, 255, 0.7)
+}
+input.username::placeholder, input.password::placeholder{
+    color: rgb(0, 0, 0);       /* Cambia el color del placeholder */
+    font-size: 16px;    /* Cambia el tamaño de la fuente */
+  }
+.imgLogo{
+    position: absolute;
+    width: 150%;
+    object-fit: cover; 
+    z-index: 1;
+    margin-top:10vw;
+    
+}
+.buttonLogin{
+    background-color: #FCFCD4;
+    border-radius: 20px;
+    padding: 10px 60px;
+    cursor: pointer;
+    margin-top:30px;
+}
+.buttonLogin:hover{
+    background-color: #62ea8d;
+}
+.opcionsLogin{
+    margin-top: 9vw;
+}
