@@ -78,10 +78,12 @@ export const UserProfile = () => {
           )}
         </div>
       </section>
-    </main>
-</>
-  );
+    </main>
+  </>
+ );
 };
+
+
 // import { Link, useParams } from "react-router-dom";
 // import { useEffect, useState } from "react";
 // import logo from "../assets/logo_HelpShare.png";
