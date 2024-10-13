@@ -15,7 +15,7 @@ export const LoginUser = () => {
     // Llamamos a la función loginConnection pasando email y password
     await loginConnection({ email, password });
     if (errorMessage) {
-        alert(errorMessage); // Si hay un error, mostramos el mensaje
+        console.log(errorMessage); // Si hay un error, mostramos el mensaje
       }
   
   };

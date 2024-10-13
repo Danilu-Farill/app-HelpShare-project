@@ -19,7 +19,6 @@ export const useOfferConnection = () => {
       return data;
     } catch (error) {
       console.error("Error durante el login", (error as Error).message);
-      alert(`Error: ${(error as Error).message}`);
     }
   };
   return { offerConnection };
