@@ -33,7 +33,7 @@ html, body {
     margin-top:10vw;
     
 }
-input.username, input.password{
+input.email, input.password{
     width: 330px;
     height: 33px;
     border-radius: 5px;
@@ -41,7 +41,7 @@ input.username, input.password{
     border-color:#726C74;
     background-color:rgba(246, 239, 255, 0.7)
 }
-input.username::placeholder, input.password::placeholder{
+input.email::placeholder, input.password::placeholder{
     color: rgb(0, 0, 0);       /* Cambia el color del placeholder */
     font-size: 16px;    /* Cambia el tamaño de la fuente */
   }
@@ -64,5 +64,8 @@ input.username::placeholder, input.password::placeholder{
     background-color: #62ea8d;
 }
 .opcionsLogin{
-    margin-top: 9vw;
+    margin-top: 18vh;
+    display: flex;
+    justify-content: center;
 }
+

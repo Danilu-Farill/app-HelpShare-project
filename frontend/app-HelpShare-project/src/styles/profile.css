@@ -1,0 +1,71 @@
+main{
+    display: flex;
+    flex-direction: row;
+    background-color: #D0F5FF;
+}
+.infoPage{
+/* background-color: blue; */
+width: 25vw;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+;
+}
+.logoProfile{
+    width: 200px;
+    margin-bottom: 100px;
+}
+.buttonOffer,.buttonSearch{
+    border-radius: 20px;
+    height: 40px;
+    width: 160px;
+    margin:15px;
+}
+.iconUser{
+    background: lightblue;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin: 8px;
+    right: 100px;
+
+    position: absolute;
+    z-index: 2;
+    transform: translateY(-50%);
+
+}
+
+.NameColor{
+    height: 90px;
+    background-color: #9BE6FB;
+    width: 100%;
+    align-items: center;
+    justify-content:flex-start;
+    display: flex;
+    padding: 60px 50px 5px;
+
+
+    position: relative;
+    z-index: 1;
+}
+.dataUser{
+/* background-color: #1D476D; */
+width: 75vw;
+height: 100vh;
+
+position: relative;
+}
+.infoPage p {
+    font-size: 30px;
+
+}
+.description{
+    z-index: 1;
+    position: relative;
+    margin:30px 50px;
+    padding-bottom: 40px;
+    width: 65%;
+    border-bottom:solid;
+}
