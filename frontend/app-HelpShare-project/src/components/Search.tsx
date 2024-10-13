@@ -1,35 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-// import React from "react"
-
-// export const Search = () =>{
-//     const [searchText, setSearchText] = React.useState('');
-//     // useEffect(() => {
-//     //     // nuestro código para traer información
-//     // }, []);
-//     return(
-//         <>
-//         <div className="container-search">
-//             <div className='container-search-input'>
-//                 <label htmlFor="search-form">
-//                     <input type="text" name="search" placeholder="Search for..." className="search" value={searchText} /> 
-//                         <FontAwesomeIcon icon={faSearch} className='iconSearch'/>
-//                 </label>
-//             </div>
-//         </div>
-//         <ul>
-//             <li className="container-list">
-//                 Productos: <span></span>
-//             </li>
-//         </ul>
-//         <div>
-
-//         </div>
-//         </>
-//     )
-// }
-
-
 import React, { useState, useEffect } from 'react';
 
 interface Product {
@@ -45,7 +15,7 @@ const products: Product[] = [
 
 export const Search = () => {
   const [searchText, setSearchText] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
 
   useEffect(() => {
     const filterProducts = () => {
@@ -66,9 +36,13 @@ export const Search = () => {
         <FontAwesomeIcon icon={faSearch} className="iconSearch" />
       </div>
       <ul className="container-list">
-        {filteredProducts.map((product) => (
-          <li key={product.id}>{product.nombre}</li>
-        ))}
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <li key={product.id}>{product.nombre}</li>
+          ))
+        ) : (
+          <li>No se encontraron productos</li> // Muestra mensaje si no hay resultados
+        )}
       </ul>
     </div>
   );

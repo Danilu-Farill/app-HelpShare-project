@@ -47,26 +47,27 @@ export const loginUser: RequestHandler = async(req:Request, resp:Response): Prom
     try {
         const { email, password } = req.body;
         if(!email || !password){
-            return resp.status(400).json("Nombre de usuario y correo electrónico son obligatorios");
+            return resp.status(400).json({ message: "Nombre de usuario y correo electrónico son obligatorios" });
         };
         const loginUser = await User.findOne({ where: { email: email}});
         if(!loginUser){
-            return resp.status(404).json("Usuario no encontrado");
+            return resp.status(404).json({ message: "Usuario no encontrado" });
         }
         let comparePsw;
         if(loginUser !== null) {    
             comparePsw = await isValidPassword(password, loginUser.password)
         }
         if(!comparePsw){
-            return resp.status(401).json("Contraseña incorrecta");
+            return resp.status(401).json({ message: "Contraseña incorrecta" });
         }
         if(!process.env.JWT_SECRET){
-            return resp.status(401).json("Variable de entorno JWT_SECRET no configurada");
+            return resp.status(401).json({ message: "Variable de entorno JWT_SECRET no configurada" });
         }
         const token = await jwt.sign(email, process.env.JWT_SECRET);
-        resp.status(200).json({message:"Usuario encontrado", token});        
+        
+        resp.status(200).json({message:"Usuario encontrado", token,username:loginUser?.username});       
     } catch (error) {
-        resp.status(500).json("Error del servidor"); 
+        resp.status(500).json({ message: "Error del servidor" }); 
     }
 };
 
