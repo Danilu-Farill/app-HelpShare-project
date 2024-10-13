@@ -3,36 +3,6 @@ import Offer from "../models/Offers.models";
 import User from "../models/Users.models";
 import { Op } from "sequelize";
 
-// // Crear una nueva oferta
-// export const createOffer = async (
-//   req: Request,
-//   res: Response
-// ): Promise<void> => {
-//   try {
-//     const { title, description, category, id_user } = req.body;
-
-//     //Validar que el usuario existe
-//     const user = await User.findByPk(id_user);
-//     if (!user) {
-//       res.status(404).json({ message: "Usuario no encontrado" });
-//       return;
-//     }
-
-//     const newOffer = await Offer.create({
-//       title,
-//       description,
-//       category,
-//       id_user,
-//     });
-//     // console.log("🚀 ~ newOffer:", newOffer)
-
-//     res.status(200).json(newOffer);
-//   } catch (error) {
-//     console.error("Error al crear la oferta:", error);
-//     res.status(500).json({ message: "Error al crear la oferta" });
-//   }
-// };
-
 export const createOffer = async (req: Request, res: Response): Promise<void> => {
   try {
     const { title, description, category } = req.body;

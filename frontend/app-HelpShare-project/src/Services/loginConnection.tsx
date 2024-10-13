@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 export const useLoginConnection = () => {
   const navigate = useNavigate();
 const [errorMessage, setErrorMessage] = useState<string>("");
-const [isAlertShown, setIsAlertShown] = useState<boolean>(false);
+// const [isAlertShown, setIsAlertShown] = useState<boolean>(false);
 
   const loginConnection = async({ email, password }: dataLogin) => {
     setErrorMessage("");
-    setIsAlertShown(false);
+    // setIsAlertShown(false);
     try {
          console.log("Enviando solicitud de login...");
          const response = await fetch(
@@ -27,11 +27,11 @@ const [isAlertShown, setIsAlertShown] = useState<boolean>(false);
         const errorData = await response.json();
         setErrorMessage(errorData.message);  // Guardamos el mensaje de error
         console.log(errorData.message) 
-        if (!isAlertShown) {
-            alert(errorData.message);
-            console.log(errorData.message) ;
-            setIsAlertShown(true);
-          }
+        // if (!isAlertShown) {
+        //     alert(errorData.message);
+        //     console.log(errorData.message) ;
+        //     setIsAlertShown(true);
+        //   }
           return; 
       }
       
@@ -40,7 +40,7 @@ const [isAlertShown, setIsAlertShown] = useState<boolean>(false);
       
       localStorage.setItem("username", data.username);
       localStorage.setItem("description", data.description);
-      setIsAlertShown(false);
+      // setIsAlertShown(false);
       navigate(`/profile/${data.username}`); 
     } catch (error) {
       console.error("Error durante el login", (error as Error).message);

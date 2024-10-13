@@ -25,6 +25,7 @@ export const FormView = ({
 
   const handleSubmit = () => {
     onSubmitOffer();
+    alert("Creado correctamente");
     navigate(`/profile/${username}`);
   };
   return (

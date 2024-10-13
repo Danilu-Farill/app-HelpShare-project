@@ -4,12 +4,14 @@ import { UserProfile } from "./components/UserProfile";
 import { Search } from "./components/Search"
 import { FormOffers } from "./components/FormOffers";
 import { FormUser } from "./components/FormUser";
+import { Home } from "./components/Home";
 
 
 function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path="/" element={<Home/>} />
         <Route path="/login" element={<LoginUser />} />
         <Route path="/profile/:username" element={<UserProfile />} />
         <Route path="/search"element={<Search />} />
