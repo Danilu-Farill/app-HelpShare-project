@@ -39,7 +39,8 @@ const [isAlertShown, setIsAlertShown] = useState<boolean>(false);
       console.log("Login exitoso", data);
       
       localStorage.setItem("username", data.username);
-      console.log(data.username)
+      localStorage.setItem("description",data.description)
+      console.log(data.descripción)
       setIsAlertShown(false);
       navigate(`/profile/${data.username}`); // Aquí usas navigate del hook
     } catch (error) {

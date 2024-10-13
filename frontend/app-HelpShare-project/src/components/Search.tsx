@@ -1,110 +1,68 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
-interface Product {
-    id: number;
-    nombre: string;
+interface Offer {
+    id: number; // Ajusta según los campos de tu base de datos
+    title: string;
+    description: string;
+  }
+export const Search =  () => {
+
+  const [query, setQuery] = useState<string>("");
+  const [offers, setOffers] = useState<Offer[]>([]);
+//   const [error, setError] = useState<string>('');
+
+  const handleSearch = async () => {
+
+    if (!query.trim()) {
+        // setError("Por favor, ingresa un término de búsqueda.");
+        return;
+      }
+  try{
+    const response = await fetch(`http://localhost:2000/api/offers/search?query=${query}`);
+    const data = await response.json();  
+    console.log(data)
+    if(response.ok){
+        setOffers(data);
+        // setError("");
+    }else{
+        setOffers([]);
+        // setError(data.message || "Hubo un error al buscar ofertas");
+    }
+}catch (error) {
+    console.error("Error", (error as Error).message);
+    // setError("Error al conectar con el servidor.");
+    setOffers([]); 
 }
-
-const products: Product[] = [
-  { id: 1, nombre: 'Producto 1' },
-  { id: 2, nombre: 'Producto 2' },
-  { id: 3, nombre: 'Producto 3' },
-];
-
-export const Search = () => {
-  const [searchText, setSearchText] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
-
-  useEffect(() => {
-    const filterProducts = () => {
-      const filteredProducts = products.filter((producto) =>
-        producto.nombre.toLowerCase().includes(searchText.toLowerCase())
-      );
-      setFilteredProducts(filteredProducts);
-    };
-    filterProducts();
-  }, [searchText]);
+  }
 
   return (
     <div className="container-search">
       <div className="container-search-input">
         <input
-          type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Buscar..." className="search"
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Buscar..."
+          className="search"
         />
-        <FontAwesomeIcon icon={faSearch} className="iconSearch" />
+        <FontAwesomeIcon icon={faSearch} className="iconSearch" onClick={handleSearch}/>
       </div>
-      <ul className="container-list">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <li key={product.id}>{product.nombre}</li>
-          ))
-        ) : (
-          <li>No se encontraron productos</li> // Muestra mensaje si no hay resultados
-        )}
-      </ul>
+      {/* Mostrar resultados de las ofertas si existen */}
+      {offers.length > 0 && (
+        <div className="offers-list">
+          <ul>
+            {offers.map((offer, index) => (
+              <li key={index}>
+                <h3>{offer.title}</h3> {/* Muestra el título de la oferta */}
+                <p>{offer.description}</p> {/* Muestra la descripción de la oferta */}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
+    
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//     return <>{error.message}</>;
-// } else if (!isLoaded) {
-//     return <>loading...</>;
-// } else {
-//     return (
-//         <div className="wrapper">
-//             <div className="search-wrapper">
-//                 <label htmlFor="search-form">
-//                     <input
-//                         type="search" name="search-form"  id="search-form" className="search-input"   placeholder="Search for..."  value={q}
-//                         onChange={(e) => setQ(e.target.value)}
-//                     />
-//                     <span className="sr-only">Search countries here</span>
-//                 </label>
-//             </div>
-//             <ul className="card-grid">
-//                 {items.map((item) => (
-//                     <li>
-//                         <article className="card" key={item.callingCodes}>
-//                             <div className="card-image">
-//                                 <img src={item.flag} alt={item.name} />
-//                             </div>
-//                             <div className="card-content">
-//                                 <h2 className="card-name">{item.name}</h2>
-//                                 <ol className="card-list">
-//                                     <li>
-//                                         population:{" "}
-//                                         <span>{item.population}</span>
-//                                     </li>
-//                                     <li>
-//                                         Region: <span>{item.region}</span>
-//                                     </li>
-//                                     <li>
-//                                         Capital: <span>{item.capital}</span>
-//                                     </li>
-//                                 </ol>
-//                             </div>
-//                         </article>
-//                     </li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
-// }
-// }
-
-// ReactDOM.render(<App />, document.getElementById("root"));

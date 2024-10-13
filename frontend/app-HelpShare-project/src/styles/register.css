@@ -1,6 +1,8 @@
 form{
     display: flex;
     flex-direction: column;
+    font-family: "Josefin Sans";
+    font-size: 18px;
 }
 label{
 display: flex;
@@ -28,6 +30,8 @@ outline: none; /* Quita el borde azul que aparece al hacer clic */
     cursor: pointer;
     color:white;
     margin-top: 20px;
+    font-family: "Josefin Sans";
+    font-size: 17px;
 }
 .buttonRegister:hover{
     background-color: #8E83ED;

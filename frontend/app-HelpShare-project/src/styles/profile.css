@@ -11,6 +11,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 flex-direction: column;
+background-color: white;
 ;
 }
 .logoProfile{
@@ -22,6 +23,9 @@ flex-direction: column;
     height: 40px;
     width: 160px;
     margin:15px;
+    font-family: "Josefin Sans";
+    font-size: 18px;
+    text-decoration: none;
 }
 .iconUser{
     background: lightblue;
@@ -45,10 +49,13 @@ flex-direction: column;
     justify-content:flex-start;
     display: flex;
     padding: 60px 50px 5px;
+    font-family: "Josefin Sans";
+    font-size: 30px;
 
 
     position: relative;
     z-index: 1;
+    font-weight: bolder;
 }
 .dataUser{
 /* background-color: #1D476D; */
@@ -58,7 +65,7 @@ height: 100vh;
 position: relative;
 }
 .infoPage p {
-    font-size: 30px;
+    font-size: 34px;
 
 }
 .description{
@@ -68,11 +75,6 @@ position: relative;
     padding-bottom: 40px;
     width: 65%;
     border-bottom:solid;
-}
-
-.container_donation {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-top: 30px;
+    font-family: "Josefin Sans";
+    font-size: 20px;
 }

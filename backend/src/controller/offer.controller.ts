@@ -130,3 +130,20 @@ export const searchOffers = async (
     res.status(500).json({ message: "Error al buscar ofertas" });
   }
 };
+
+// Obtener una oferta por ID 
+export const getOfferById = async (req: Request, res: Response): Promise<any> => {
+  try {
+    const { id_user } = req.params;
+    const offer = await Offer.findAll({where:{id_user}});
+    console.log("🚀 ~ getOfferById ~ offer:", offer)
+
+    // if (!offer) {
+    //   return res.status(404).json({ message: 'Offer not found' });
+    // }
+    res.status(200).json(offer);
+  } catch (error) {
+    console.error("Error fetching offer by ID:", error);
+    res.status(500).json({ message: 'Error fetching offer by ID' });
+  }
+};
