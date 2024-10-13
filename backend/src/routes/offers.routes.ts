@@ -9,5 +9,4 @@ routerOffers.get('/offerId/:id_user', getOfferById);
 routerOffers.put('/:id', updateOffer);
 routerOffers.delete('/:id', deleteOffer);
 routerOffers.get('/search', searchOffers);
-
 export { routerOffers};
