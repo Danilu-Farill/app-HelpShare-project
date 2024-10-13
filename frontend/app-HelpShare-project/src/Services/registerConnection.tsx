@@ -1,6 +1,8 @@
 // import { dataRegister } from "../models/dataLogin";
+import { useNavigate } from "react-router-dom";
 
 export const useRegisterConnection = () => {
+  const navigate = useNavigate();
   const registerConnection = async ({ email, password, username, description }: { email: string; password: string, username: string, description:string }) => {
     try {
       const response = await fetch("http://localhost:2000/api/users/create", {
@@ -18,6 +20,7 @@ export const useRegisterConnection = () => {
 
       const data = await response.json();
       localStorage.setItem("username", data.username);
+      navigate(`/profile/${data.username}`);
     } catch (error) {
       console.error("Error durante el registro", (error as Error).message);
     }

@@ -39,6 +39,8 @@ export const createUser: RequestHandler = async(req:Request, resp:Response): Pro
         const user = await User.create({ username, email, password: pswHash, description});
         resp.status(201).json(user);
     } catch (error) {
+        console.log("Aqui esta el error:",error);
+        
         resp.status(500).json("Error del servidor")    
     }
 };

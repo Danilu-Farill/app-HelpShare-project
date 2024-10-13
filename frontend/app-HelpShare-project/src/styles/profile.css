@@ -69,3 +69,10 @@ position: relative;
     width: 65%;
     border-bottom:solid;
 }
+
+.container_donation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 30px;
+}
