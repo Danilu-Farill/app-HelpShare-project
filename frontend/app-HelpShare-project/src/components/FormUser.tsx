@@ -8,7 +8,6 @@ export const FormUser = () => {
     const [description, setDescription] = useState<string>('');
     const { registerConnection } = useRegisterConnection();
    
-
     const handleCreate = async () => {
         console.log("Datos enviados:", email, password);
         await registerConnection({ email, password, username, description });

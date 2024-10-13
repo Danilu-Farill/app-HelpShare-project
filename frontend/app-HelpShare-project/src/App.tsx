@@ -13,9 +13,11 @@ function App() {
         <Route path="/login" element={<LoginUser />} />
         <Route path="/profile/:username" element={<UserProfile />} />
         <Route path="/search"element={<Search />} />
+        <Route path="/formOffer/:id_user" element={<FormOffers />} />
         <Route path="/register" element={<FormUser/>} />
         <Route path="/formOffer" element={<FormOffers />} />
         <Route path="/formUser" element={<FormUser />} />
+
       </Routes>
     </div>
   );

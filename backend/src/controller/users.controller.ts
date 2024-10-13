@@ -47,7 +47,7 @@ export const createUser: RequestHandler = async(req:Request, resp:Response): Pro
 
 export const loginUser: RequestHandler = async(req:Request, resp:Response): Promise<any> => {
     try {
-        const { email, password } = req.body;
+        const { email, password, description } = req.body;
         if(!email || !password){
             return resp.status(400).json({ message: "Nombre de usuario y correo electrónico son obligatorios" });
         };
@@ -66,8 +66,9 @@ export const loginUser: RequestHandler = async(req:Request, resp:Response): Prom
             return resp.status(401).json({ message: "Variable de entorno JWT_SECRET no configurada" });
         }
         const token = await jwt.sign(email, process.env.JWT_SECRET);
+        console.log("🚀 ~ constloginUser:RequestHandler=async ~ token:", token)
         
-        resp.status(200).json({message:"Usuario encontrado", token,username:loginUser?.username});       
+        resp.status(200).json({message:"Usuario encontrado", token,username:loginUser?.username, description:loginUser?.description});       
     } catch (error) {
         resp.status(500).json({ message: "Error del servidor" }); 
     }

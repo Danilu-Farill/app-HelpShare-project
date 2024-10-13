@@ -41,8 +41,8 @@ export const FormView = ({
             <label>
               <input
                 type="radio"
-                value="Producto"
-                checked={category === "Producto"}
+                value="product"
+                checked={category === "product"}
                 onChange={(e) => setCategory(e.target.value)}
               />
               Producto
@@ -50,8 +50,8 @@ export const FormView = ({
             <label>
               <input
                 type="radio"
-                value="Servicio"
-                checked={category === "Servicio"}
+                value="service"
+                checked={category === "service"}
                 onChange={(e) => setCategory(e.target.value)}
               />
               Servicio
@@ -62,7 +62,7 @@ export const FormView = ({
             className="buttonSubmit"
             type="submit"
             onClick={onSubmitOffer}
-          >
+          > 
             Crear Oferta
           </button>
         </section>

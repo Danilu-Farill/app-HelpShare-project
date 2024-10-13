@@ -4,9 +4,9 @@ import { BrowserRouter } from "react-router-dom";
 import './styles/login.css'
 import './styles/register.css'
 import './styles/search.css'
+import './styles/form.css'
 import './styles/profile.css'
-import './styles/formOffers.css'
-
+import './styles/form.css'
 import App from "./App.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
