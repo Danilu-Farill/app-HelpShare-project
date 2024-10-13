@@ -13,6 +13,8 @@ export const useOfferConnection = () => {
         throw new Error(`Error HTTP: ${response.status}`);
       }
       const data = await response.json();
+      // const local = localStorage.setItem("data", data);
+      // console.log("🚀 ~ offerConnection ~ local:", local, )
       console.log("Oferta creada:", data);
       return data;
     } catch (error) {

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { /*Link,*/ useNavigate } from "react-router-dom";
 
 interface FormOffer {
   title: string;
@@ -8,6 +8,7 @@ interface FormOffer {
   setDescription: (value: string) => void;
   setCategory: (value: string) => void;
   onSubmitOffer: () => void;
+  username: string; 
 }
 
 export const FormView = ({
@@ -18,7 +19,14 @@ export const FormView = ({
   setDescription,
   setCategory,
   onSubmitOffer,
+  username,
 }: FormOffer) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = () => {
+    onSubmitOffer();
+    navigate(`/profile/${username}`);
+  };
   return (
     <>
       <section className="form-container">
@@ -57,23 +65,13 @@ export const FormView = ({
               Servicio
             </label>
           </div>
-
           <button
             className="buttonSubmit"
             type="submit"
-            onClick={onSubmitOffer}
+            onClick={handleSubmit}
           > 
             Crear Oferta
           </button>
-        </section>
-        <section className="optionsForm">
-          <p>
-            ¿Volver al inicio?
-            <Link to="/" className="linkStyle">
-              {" "}
-              Inicio
-            </Link>
-          </p>
         </section>
       </section>
     </>

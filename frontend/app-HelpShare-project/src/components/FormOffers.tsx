@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormView } from "./FormView";
-import { useOfferConnection } from "../Services/useOfferConnection"; // Importa el hook correctamente
+import { useOfferConnection } from "../Services/useOfferConnection"; 
 
 export const FormOffers = () => {
   const [title, setTitle] = useState('');
@@ -8,12 +8,13 @@ export const FormOffers = () => {
   const [category, setCategory] = useState('');
   const idUser = 2; // Definir idUser directamente
 
-  // Usamos el custom hook aquí
+  // Obtener el username del localStorage o de donde sea que se guarde
+  const username = localStorage.getItem("username") || ("usuarioDesconocido");
+
   const { offerConnection } = useOfferConnection();
 
-  const handleOfferSubmit = async (): Promise<void> => {
+  const handleOfferSubmit = async (): Promise<void> => {  
     console.log("Datos enviados:", title, description, category);
-    // Llamamos a la función offerConnection pasando el id_user y los datos de la oferta
     await offerConnection(idUser, { title, description, category });
   };
   
@@ -25,7 +26,13 @@ export const FormOffers = () => {
       setTitle={setTitle}
       setDescription={setDescription}
       setCategory={setCategory}
-      onSubmitOffer={handleOfferSubmit} // Pasamos handleOfferSubmit a Formu
+      onSubmitOffer={handleOfferSubmit}
+      username={username} // Pasamos el username aquí
     />
   );
 };
+
+
+
+
+
